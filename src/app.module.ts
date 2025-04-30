@@ -18,7 +18,7 @@ import { OrderModule } from './modules/order.module';
       port: 3306,
       username: 'root',
       password: '123456',
-      database: 'dev_food_service',
+      database: '2t_mobile',
       entities: [join(__dirname, '**', '*.entity{.ts,.js}')],
       synchronize: false,
       logging: false,
