@@ -4,8 +4,8 @@ import {
   Injectable,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserJwtDto } from 'src/database/dto/user/user.dto';
-import { User } from 'src/database/entity/user.entity';
+import { UserJwtDto } from 'src/dto/user.dto';
+import { User } from 'src/entity/user.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -17,14 +17,14 @@ export class HelperService {
 
   public async validateAdmin(UserReq: UserJwtDto) {
     const user = await this.userRepository.findOne({
-      where: { UserID: Number(UserReq.id) },
+      where: { id: Number(UserReq.id) },
     });
 
     if (!user) {
       throw new BadRequestException('USER_NOT_FOUND');
     }
 
-    if (user.Role !== 'Admin') {
+    if (user.isAdmin == true) {
       throw new BadRequestException('USER_NOT_ADMIN');
     }
 

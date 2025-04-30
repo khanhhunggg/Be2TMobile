@@ -11,7 +11,6 @@ import {
   Length,
 } from 'class-validator';
 import { PaginationResponseDto } from 'src/common/common.dto';
-import { User } from 'src/database/entity/user.entity';
 
 export class UserJwtDto {
   id: string;
@@ -30,11 +29,6 @@ export class SignUpDto {
   @IsString()
   Password: string;
 
-  @ApiProperty({ type: String, description: 'FullName', required: true })
-  @IsOptional()
-  @IsString()
-  FullName: string;
-
   @ApiProperty({ type: String, description: 'PhoneNumber', required: true })
   @IsOptional()
   @IsPhoneNumber()
@@ -42,10 +36,10 @@ export class SignUpDto {
 }
 
 export class SignInDto {
-  @ApiProperty({ type: String, description: 'Email', required: true })
+  @ApiProperty({ type: String, description: 'PhoneNumber', required: true })
   @IsOptional()
-  @IsEmail()
-  Email: string;
+  @IsPhoneNumber()
+  PhoneNumber: string;
 
   @ApiProperty({ type: String, description: 'PassWord', required: true })
   @IsString()

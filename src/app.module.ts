@@ -4,12 +4,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { DataSource } from 'typeorm';
-import { CommonModule } from './common/common.module';
-import { FoodModule } from './modules/food.module';
-import { UserModule } from './modules/user.module';
-import { CartModule } from './modules/cart.module';
-import { CartFoodModule } from './modules/cartFood.module';
-import { OrderModule } from './modules/order.module';
+import { UserModule } from './user/user.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -23,12 +18,7 @@ import { OrderModule } from './modules/order.module';
       synchronize: false,
       logging: false,
     }),
-    CommonModule,
-    FoodModule,
     UserModule,
-    OrderModule,
-    CartModule,
-    CartFoodModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET_KEY,
       signOptions: { expiresIn: process.env.JWT_EXPIRES_IN },
@@ -36,6 +26,7 @@ import { OrderModule } from './modules/order.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    UserModule,
   ],
   controllers: [],
   providers: [],
