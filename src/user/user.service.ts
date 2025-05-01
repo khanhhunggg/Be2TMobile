@@ -43,12 +43,12 @@ export class UserService {
         throw new BadRequestException('EMAIL_INVALID');
       }
       console.log(user);
-      const existingUser = await this.userRepository.findOne({
-        where: { email: user.Email },
-      });
-      if (existingUser) {
-        throw new BadRequestException('EMAIL_ALREADY_EXISTS');
-      }
+      // const existingUser = await this.userRepository.findOne({
+      //   where: { email: user.Email },
+      // });
+      // if (existingUser) {
+      //   throw new BadRequestException('EMAIL_ALREADY_EXISTS');
+      // }
       if (!user.Password) {
         throw new BadRequestException('PASSWORD_REQUIRED');
       }
@@ -60,7 +60,7 @@ export class UserService {
       }
       const newUser = new User();
       newUser.email = user.Email;
-      newUser.userName = '';
+      
       const salt = await bcryptjs.genSalt();
       newUser.password = await bcryptjs.hash(user.Password, salt);
       newUser.phoneNumber = user.PhoneNumber;
@@ -85,9 +85,9 @@ export class UserService {
       if (!user.Password) {
         throw new BadRequestException('PASSWORD_REQUIRED');
       }
-      if (checkPassword(user.Password)) {
-        throw new BadRequestException('PASSWORD_INVALID');
-      }
+      // if (checkPassword(user.Password)) {
+      //   throw new BadRequestException('PASSWORD_INVALID');
+      // }
       const isMatch = await bcryptjs.compare(
         user.Password,
         existingUser.password,

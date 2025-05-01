@@ -12,7 +12,7 @@ import { UserModule } from './user/user.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '123456',
+      password: 'Khanhhung1@',
       database: '2t_mobile',
       entities: [join(__dirname, '**', '*.entity{.ts,.js}')],
       synchronize: false,

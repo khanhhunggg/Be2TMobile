@@ -42,8 +42,8 @@ export class UserController {
   }
 
   @Post('log-out')
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
+  // @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Đăng xuất' })
   public async LogOut(@UserReq() user: UserJwtDto) {
     return await this.userService.LogOut(user);
@@ -56,8 +56,8 @@ export class UserController {
   }
 
   @Put('update-profile')
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
+  // @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Cập nhật thông tin tài khoản' })
   public async UpdateProfile(
     @Query() dto: UpdateProfileDto,
@@ -67,8 +67,8 @@ export class UserController {
   }
 
   @Put('update-user-by-id')
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
+  // @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Cập nhật thông tin người dùng bằng id' })
   public async UpdateUserByID(
     @Query() dto: UpdateDtoQuery,
@@ -79,8 +79,8 @@ export class UserController {
   }
 
   @Delete('delete-user-by-id')
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
+  // @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Xóa người dùng bằng id' })
   public async DeleteUserById(
     @Query() dto: DeleteUserDto,
@@ -90,8 +90,8 @@ export class UserController {
   }
 
   @Delete('delete-user-by-ids')
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
+  // @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Xóa nhiều người dùng bằng id' })
   public async DeleteUserByIds(
     @Body() ids: number[],
@@ -101,8 +101,8 @@ export class UserController {
   }
 
   @Get('get-all-user')
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
+  // @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Get user by email' })
   public async GetUserByEmail(
     @Query() dto: PaginationResponseDto,
@@ -112,8 +112,8 @@ export class UserController {
   }
 
   @Get('get-user-by-id')
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
+  // @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Get user by id' })
   public async GetUserByID(
     @Query() id: UpdateDtoQuery,
@@ -123,8 +123,8 @@ export class UserController {
   }
 
   @Get('search-user')
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
+  // @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Get user by keyword' })
   public async GetUserByKeyword(
     @Query() dto: SearchDto,
